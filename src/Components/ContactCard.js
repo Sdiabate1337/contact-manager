@@ -7,7 +7,7 @@ import user from "../images/user.png";
 const ContactCard = (props) => {
 
     const {id, name, email} = props.contact;
-
+   
     return (
         <Item>
               <Content>

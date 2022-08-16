@@ -11,7 +11,7 @@ const ContactList = (props) => {
            <ContactCard  contact = {contact}/>
         );
        
-    })
+    });
    
    
    
