@@ -3,25 +3,46 @@ import styled from "styled-components";
 
 
 class AddContact extends React.Component{
+   state = {
+        name :"",
+        email : "",
+    };
+    add = (e) =>{
+        e.preventDefault();         
+         if(this.state.name === "" || this.state.email === ""){
+            alert("name or email is empty!!")
+            return
+          }
+          this.props.addCotactHandler(this.state)
+          this.setState({name:"", email:""});
+    }
+
     render() {
        return(
             <Container>
                 <Content>
                     <Title>Add contact</Title>
-                    <Form>
+                    <Form onSubmit={this.add}>
                         <Field>
                            <label>Name</label>
-                           <input type="text" name="name" placeholder="nom"></input>
+                           <input type="text" 
+                           name="name" 
+                           placeholder="nom" 
+                           onChange={(e) =>{this.setState({name: e.target.value })}}
+                           value = {this.state.name}
+                           ></input>
                         </Field>
-                    </Form>
-
-                    <Form>
                         <Field>
                            <label>Email</label>
-                           <input type="email" name="email" placeholder="absc@gmail.com"></input>
+                           <input type="email" 
+                           name="email" 
+                           placeholder="absc@gmail.com"
+                           onChange={(e) =>{this.setState({email: e.target.value })}}
+                           value = {this.state.email}
+                           ></input>
                         </Field>
+                        <Buttom>Add</Buttom>
                     </Form>
-                    <Buttom>Add</Buttom>
                 </Content>
                
             </Container>
